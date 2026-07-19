@@ -58,16 +58,17 @@ Everything is defined once at the top of [`css/styles.css`](css/styles.css) unde
 intentionally monochrome (black / white / warm greys) — photography is meant to
 supply the only color.
 
-### Add the hero photograph (recommended)
-The home hero currently shows an elegant neutral placeholder. To drop in a real
-photo, add a `--hero-img` inline style to the `<section class="hero">` tag in
-`index.html`:
+### Change the hero photograph
+The home hero uses `assets/hero.webp`. To swap it, either replace that file, or
+point the `hero__media` layer at a different image in `index.html`:
 
 ```html
-<section class="hero" style="--hero-img:url('assets/hero.jpg')">
+<div class="hero__media" style="background-image:url('assets/hero.webp')" aria-hidden="true"></div>
 ```
 
-A dark scrim keeps the white serif type legible over any image.
+A dark scrim (`.hero__bg` in the CSS) keeps the white serif type legible over any
+image — if a photo reads too bright, deepen the scrim's opacity values there.
+If the image is ever missing, the hero falls back to a neutral charcoal gradient.
 
 ### Add section photography
 Any `<div class="split__media">` (About page, Home "what it is") is image-ready.

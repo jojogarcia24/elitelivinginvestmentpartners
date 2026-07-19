@@ -441,31 +441,30 @@ p:last-child { margin-bottom: 0; }
   overflow: hidden;
   color: var(--cream);
   text-align: center;
+  /* Neutral charcoal fallback, shown behind everything if no photo is set. */
+  background: linear-gradient(160deg, #26262b, #0e0e10 78%);
 }
 /*
-  Hero background: drop in real photography by setting --hero-img on the .hero
-  element, e.g. style="--hero-img:url('assets/hero.jpg')". A dark scrim keeps the
-  serif type legible over any image. Until a photo is supplied, an elegant
-  neutral architectural gradient stands in.
+  Hero photography: set the photo on the .hero__media layer with an inline style
+  in the HTML, e.g. <div class="hero__media" style="background-image:url('assets/hero.webp')">.
+  (Editing it in the HTML means the path resolves relative to the page, which is
+  intuitive.) The .hero__bg scrim above it keeps the white serif legible.
 */
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+}
 .hero__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* Scrim over the photo (keeps white serif legible) → the photo → a neutral
-     charcoal fallback shown until assets/hero.jpg is added. */
+  /* Scrim: darkens the photo just enough for legible white type. */
   background:
-    linear-gradient(180deg, rgba(10,10,12,0.48), rgba(10,10,12,0.60)),
-    var(--hero-img, none),
-    linear-gradient(160deg, #26262b, #0e0e10 78%);
-  background-size: cover;
-  background-position: center;
-}
-.hero__bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(90% 70% at 50% 45%, transparent 38%, rgba(8,8,10,0.5));
+    linear-gradient(180deg, rgba(10,10,12,0.46), rgba(10,10,12,0.58)),
+    radial-gradient(90% 70% at 50% 45%, transparent 38%, rgba(8,8,10,0.5));
 }
 .hero__inner { position: relative; z-index: 1; max-width: 1000px; margin-inline: auto; }
 .hero__title {
