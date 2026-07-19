@@ -452,10 +452,12 @@ p:last-child { margin-bottom: 0; }
   position: absolute;
   inset: 0;
   z-index: 0;
+  /* Scrim over the photo (keeps white serif legible) → the photo → a neutral
+     charcoal fallback shown until assets/hero.jpg is added. */
   background:
-    linear-gradient(180deg, rgba(16,15,11,0.55), rgba(16,15,11,0.62)),
+    linear-gradient(180deg, rgba(10,10,12,0.48), rgba(10,10,12,0.60)),
     var(--hero-img, none),
-    radial-gradient(120% 90% at 50% 0%, #37352c, #14130e 70%);
+    linear-gradient(160deg, #26262b, #0e0e10 78%);
   background-size: cover;
   background-position: center;
 }
@@ -463,7 +465,7 @@ p:last-child { margin-bottom: 0; }
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(90% 70% at 50% 45%, transparent 40%, rgba(16,15,11,0.45));
+  background: radial-gradient(90% 70% at 50% 45%, transparent 38%, rgba(8,8,10,0.5));
 }
 .hero__inner { position: relative; z-index: 1; max-width: 1000px; margin-inline: auto; }
 .hero__title {
