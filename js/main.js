@@ -6,22 +6,40 @@
      2. Mobile navigation drawer
      3. Reveal-on-scroll animations
      4. Lead-form submission (to the Supabase edge function — see /supabase)
-     5. Footer year stamp
-   Edit the CONFIG block below to connect the form to your backend.
+     5. Google Analytics (optional — set gaId below)
+     6. Footer year stamp
+   Edit the CONFIG block below to connect the form and analytics.
    ============================================================================= */
 
 /* ---------------------------------------------------------------------------
-   CONFIG — set this after creating your Supabase project (see /supabase/README.md)
+   CONFIG
    --------------------------------------------------------------------------- */
 window.ELIP_CONFIG = window.ELIP_CONFIG || {
-  // The public URL of your deployed "submit-lead" edge function.
-  // Example: "https://YOUR-PROJECT-ref.supabase.co/functions/v1/submit-lead"
+  // Public URL of the deployed "submit-lead" edge function (live).
   // Leave empty ("") to run the form in DEMO mode (no network call).
-  leadEndpoint: "",
+  leadEndpoint: "https://lufsivxunblsyvcfbnrj.supabase.co/functions/v1/submit-lead",
+
+  // Google Analytics 4 Measurement ID, e.g. "G-XXXXXXXXXX".
+  // Get it from https://analytics.google.com → Admin → Data streams → your web
+  // stream → "Measurement ID". Leave empty ("") to disable analytics.
+  gaId: "",
 };
 
 (function () {
   "use strict";
+
+  /* --- 0. Google Analytics (loads only if a gaId is configured) ------------ */
+  var gaId = (window.ELIP_CONFIG && window.ELIP_CONFIG.gaId) || "";
+  if (gaId) {
+    var g = document.createElement("script");
+    g.async = true;
+    g.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(gaId);
+    document.head.appendChild(g);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", gaId);
+  }
 
   /* --- 1. Sticky header ---------------------------------------------------- */
   var header = document.querySelector(".site-header");

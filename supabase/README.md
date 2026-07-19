@@ -1,7 +1,29 @@
 # Lead-capture backend (Supabase) — setup guide
 
-The website's application form is **ready to connect** to a Supabase backend.
-Nothing is live yet — follow these steps once to switch it on. Budget ~10 minutes.
+> ## ✅ STATUS: LIVE
+> The form is already deployed and connected to the **`elitelivinginvestmentpartners`**
+> Supabase project (ref `lufsivxunblsyvcfbnrj`):
+> - `leads` table created, **RLS on**, no public insert policy.
+> - `submit-lead` edge function deployed (public / no-JWT, with honeypot +
+>   validation + per-IP rate limit).
+> - The site posts to
+>   `https://lufsivxunblsyvcfbnrj.supabase.co/functions/v1/submit-lead`
+>   (set in `js/main.js`).
+>
+> **Submissions are saving now.** View them in Supabase → **Table Editor → leads**.
+>
+> **Two things left for EMAIL ALERTS** (leads still save without them) — set these
+> secrets in Supabase → **Project Settings → Edge Functions → Secrets**, then
+> redeploy the function:
+> - `RESEND_API_KEY` — from [resend.com](https://resend.com) (verify your sending domain).
+> - `NOTIFY_TO=info@vossriskadvisors.com`
+> - `IP_HASH_SALT` — any long random string (replaces the insecure default).
+>
+> The rest of this file documents the setup for reference / rebuilding.
+
+---
+
+The steps below are the original from-scratch guide (already completed above).
 
 > **Why this design?** The public site only ever holds the Supabase URL + anon
 > key and calls one small **edge function**. That function validates, rate-limits,

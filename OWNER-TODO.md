@@ -11,10 +11,14 @@ Grouped by priority.
       no operating brokerage or partner brand is named). Confirm which vertical
       brand names, if any, may be shown publicly.
 
-## 2. Lead form backend (required for the form to save leads)
-- [ ] Create the dedicated **Supabase project** and connect the form —
-      full steps in [`supabase/README.md`](supabase/README.md).
-- [ ] Provide the **lead-notification email** (where new applications are sent).
+## 2. Lead form backend
+- [x] ~~Create Supabase project + connect the form~~ — **DONE.** Live on the
+      `elitelivinginvestmentpartners` project; submissions save to the `leads`
+      table now (view them in Supabase → Table Editor → leads).
+- [ ] **Email alerts** (optional but recommended) — add `RESEND_API_KEY`,
+      `NOTIFY_TO=info@vossriskadvisors.com`, and `IP_HASH_SALT` as edge-function
+      secrets, then redeploy. Steps in [`supabase/README.md`](supabase/README.md).
+      Until then, leads still save; you just won't get an email ping.
 - [ ] Decide: send applicants an **autoresponder**? (Off by default.)
 
 ## 3. Brand assets & content
@@ -35,8 +39,10 @@ Grouped by priority.
 - [ ] Confirm the **"Enter Portal"** link target `https://www.backbossai.com/`.
 
 ## 5. SEO & analytics
-- [ ] **Analytics ID** — paste your GA4 or Plausible snippet before `</head>`
-      on each page.
+- [ ] **Analytics ID** — analytics is wired; just paste your GA4 Measurement ID
+      into `gaId` in `js/main.js`. Get it from
+      [analytics.google.com](https://analytics.google.com) → Admin → Data streams
+      → your web stream → **Measurement ID** (`G-XXXXXXXXXX`). Empty = disabled.
 - [ ] Confirm the **domain** and update any absolute URLs if it changes
       (they currently use `https://www.vossriskadvisors.com`). These appear in:
       each page's canonical/OG tags, `sitemap.xml`, and `robots.txt`.
