@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 150" role="img" aria-label="Elite Living Investment Partners">
+  <!-- Wordmark lockup — light (cream) on transparent, for dark backgrounds. -->
+  <style>
+    .wm { font-family: "Playfair Display", Georgia, serif; font-weight: 500; }
+    .lg { font-size: 52px; letter-spacing: 9px; fill: #F4F1EA; }
+    .sm { font-family: "Inter","Helvetica Neue",Arial,sans-serif; font-size: 13px;
+          letter-spacing: 11px; fill: #CFCBBF; }
+  </style>
+  <text class="wm lg" x="280" y="72" text-anchor="middle">ELITE LIVING</text>
+  <text class="sm" x="283" y="104" text-anchor="middle">INVESTMENT&#160;&#160;PARTNERS</text>
+</svg>

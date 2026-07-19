@@ -1,0 +1,17 @@
+{
+  "name": "Elite Living Investment Partners",
+  "short_name": "Elite Living",
+  "description": "A private members' partnership for entrepreneurs across lending, insurance, title, and real estate.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBFAF8",
+  "theme_color": "#FBFAF8",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
