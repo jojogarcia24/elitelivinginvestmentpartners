@@ -62,6 +62,14 @@ function clean(v: unknown, max = 2000): string {
   return typeof v === "string" ? v.trim().slice(0, max) : "";
 }
 
+function esc(v: string): string {
+  return v
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
@@ -134,12 +142,30 @@ Deno.serve(async (req: Request) => {
         body: JSON.stringify({
           from: NOTIFY_FROM,
           to: [NOTIFY_TO],
+          reply_to: email,
           subject: `New application — ${name}`,
           text:
             `New Elite Living application\n\n` +
             `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "—"}\n` +
             `Vertical: ${vertical || "—"}\nSource: ${source || "—"}\n\n` +
             `Message:\n${message || "—"}\n`,
+          html:
+            `<div style="font-family:Arial,Helvetica,sans-serif;color:#2c2a24;max-width:560px;margin:0 auto;line-height:1.6;font-size:15px">` +
+            `<div style="background:#16150f;padding:18px 22px;margin-bottom:22px">` +
+            `<span style="font-family:Georgia,'Times New Roman',serif;color:#f4f1ea;font-size:16px;letter-spacing:2px;text-transform:uppercase">New application</span>` +
+            `</div>` +
+            `<table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;font-size:15px">` +
+            `<tr><td style="padding:6px 0;color:#7c7a72;width:110px">Name</td><td style="padding:6px 0;font-weight:bold">${esc(name)}</td></tr>` +
+            `<tr><td style="padding:6px 0;color:#7c7a72">Email</td><td style="padding:6px 0"><a href="mailto:${esc(email)}" style="color:#16150f">${esc(email)}</a></td></tr>` +
+            `<tr><td style="padding:6px 0;color:#7c7a72">Phone</td><td style="padding:6px 0">${esc(phone) || "—"}</td></tr>` +
+            `<tr><td style="padding:6px 0;color:#7c7a72">Vertical</td><td style="padding:6px 0">${esc(vertical) || "—"}</td></tr>` +
+            `<tr><td style="padding:6px 0;color:#7c7a72">Source</td><td style="padding:6px 0">${esc(source) || "—"}</td></tr>` +
+            `</table>` +
+            `<div style="margin-top:18px;padding-top:16px;border-top:1px solid #e4e0d8">` +
+            `<div style="color:#7c7a72;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Message</div>` +
+            `<div style="white-space:pre-wrap">${message ? esc(message) : "—"}</div>` +
+            `</div>` +
+            `</div>`,
         }),
       });
     } catch (e) {
@@ -177,7 +203,7 @@ Deno.serve(async (req: Request) => {
             `<div style="font-family:Arial,sans-serif;color:#cfcbbf;font-size:10px;letter-spacing:5px;text-transform:uppercase;margin-top:4px">Investment&nbsp;Partners</div>` +
             `</div>` +
             `<div style="font-family:Arial,Helvetica,sans-serif;color:#2c2a24;max-width:560px;margin:0 auto;padding:32px 24px;line-height:1.65;font-size:15px">` +
-            `<p>Hi ${firstName},</p>` +
+            `<p>Hi ${esc(firstName)},</p>` +
             `<p>Thank you for your interest in <strong>Elite Living Investment Partners</strong>.</p>` +
             `<p>We've received your request for an invitation, and someone from our team will be in touch personally to continue the conversation.</p>` +
             `<p>In the meantime, feel free to explore the network at ` +
