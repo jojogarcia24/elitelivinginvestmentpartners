@@ -133,7 +133,7 @@ Deno.serve(async (req: Request) => {
   // --- Notify the owner (best-effort; never blocks the response) -------------
   if (RESEND_API_KEY && NOTIFY_TO) {
     try {
-      await fetch("https://api.resend.com/emails", {
+      const ownerRes = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${RESEND_API_KEY}`,
@@ -168,6 +168,7 @@ Deno.serve(async (req: Request) => {
             `</div>`,
         }),
       });
+      console.log("Owner email -> Resend status:", ownerRes.status, "body:", await ownerRes.text());
     } catch (e) {
       console.error("Notification email failed:", e);
     }
@@ -177,7 +178,7 @@ Deno.serve(async (req: Request) => {
   if (RESEND_API_KEY) {
     const firstName = name.split(/\s+/)[0] || "there";
     try {
-      await fetch("https://api.resend.com/emails", {
+      const applicantRes = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${RESEND_API_KEY}`,
@@ -213,6 +214,7 @@ Deno.serve(async (req: Request) => {
             `</div>`,
         }),
       });
+      console.log("Applicant email -> Resend status:", applicantRes.status, "body:", await applicantRes.text());
     } catch (e) {
       console.error("Auto-responder failed:", e);
     }
