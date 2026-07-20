@@ -22,7 +22,7 @@ window.ELIP_CONFIG = window.ELIP_CONFIG || {
   // Google Analytics 4 Measurement ID, e.g. "G-XXXXXXXXXX".
   // Get it from https://analytics.google.com → Admin → Data streams → your web
   // stream → "Measurement ID". Leave empty ("") to disable analytics.
-  gaId: "",
+  gaId: "G-400TFRVE7N",
 };
 
 (function () {
