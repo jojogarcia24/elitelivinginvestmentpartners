@@ -15,10 +15,8 @@ Grouped by priority.
 - [x] ~~Create Supabase project + connect the form~~ — **DONE.** Live on the
       `elitelivinginvestmentpartners` project; submissions save to the `leads`
       table now (view them in Supabase → Table Editor → leads).
-- [ ] **Email alerts** (optional but recommended) — add `RESEND_API_KEY`,
-      `NOTIFY_TO=info@elitelivinginvestmentpartners.com`, and `IP_HASH_SALT` as edge-function
-      secrets, then redeploy. Steps in [`supabase/README.md`](supabase/README.md).
-      Until then, leads still save; you just won't get an email ping.
+- [x] ~~Email alerts~~ — **ON.** RESEND_API_KEY is set; new applications email
+      info@elitelivinginvestmentpartners.com, and applicants get an auto-reply.
 - [x] ~~Applicant **autoresponder**~~ — **ON.** Every applicant now gets a branded confirmation email from noreply@elitelivinginvestmentpartners.com.
 
 ## 3. Brand assets & content
