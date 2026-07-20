@@ -283,6 +283,9 @@ p:last-child { margin-bottom: 0; }
   gap: 1.5rem;
 }
 .brand { display: inline-flex; flex-direction: column; gap: 0.15rem; color: inherit; }
+.brand--lockup { flex-direction: row; align-items: center; gap: 0.6rem; }
+.brand--lockup .brand__mark { width: 2.7rem; height: 2.7rem; flex: none; display: block; }
+.brand__text { display: inline-flex; flex-direction: column; gap: 0.15rem; }
 .brand__word {
   font-family: var(--font-display);
   font-size: 1.5rem;
