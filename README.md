@@ -10,7 +10,7 @@ and real estate.
 - **Stack:** plain HTML + CSS + vanilla JS. **No build step.** Edit the `.html`
   files directly and refresh the browser.
 - **Displayed brand:** "Elite Living Investment Partners." **Domain:**
-  `www.vossriskadvisors.com` (intended — the brand shown differs from the domain).
+  `elitelivinginvestmentpartners.com`.
 
 > **All marketing copy is DRAFT and requires legal review before publishing.**
 > See [`COMPLIANCE-NOTES`](#compliance--legal) below.
@@ -89,16 +89,20 @@ in `assets/`. The favicon is `assets/favicon.svg`.
 
 ## The lead form
 
-The application form (Home + Contact pages) is **ready to connect** but not live
-yet. It runs in **demo mode** until you set an endpoint: it validates, then
-redirects to `thank-you.html` without saving anything.
+The application form (Home + Contact pages) is **live** — connected to the
+dedicated `elitelivinginvestmentpartners` Supabase project. Submissions save to
+the `leads` table (view them in Supabase → Table Editor → leads).
 
-To switch it on, follow **[`supabase/README.md`](supabase/README.md)** (create a
-dedicated Supabase project, run the schema, deploy the edge function, then set
-`leadEndpoint` in [`js/main.js`](js/main.js)). ~10 minutes.
+- Endpoint is set in [`js/main.js`](js/main.js) (`ELIP_CONFIG.leadEndpoint`).
+- For **email alerts** on each submission, add a `RESEND_API_KEY` secret in
+  Supabase — see [`supabase/README.md`](supabase/README.md).
+- Spam protection: hidden honeypot field, server-side validation, and a per-IP
+  rate limit in the edge function.
 
-The form has three layers of spam protection: a hidden honeypot field,
-server-side validation, and a per-IP rate limit in the edge function.
+## Analytics
+
+Google Analytics is wired but off until you add an ID: paste your GA4 Measurement
+ID (`G-XXXXXXXXXX`) into `gaId` in [`js/main.js`](js/main.js).
 
 ---
 
@@ -112,7 +116,7 @@ support drag-and-drop or Git deploys):
 - **Vercel** — `vercel` CLI, or import the repo.
 - **Cloudflare Pages** — connect the repo; build command: *(none)*, output dir: `/`.
 
-Then point `www.vossriskadvisors.com` at the host per their DNS instructions.
+Then point `elitelivinginvestmentpartners.com` at the host per their DNS instructions.
 Add analytics by pasting your GA/Plausible snippet before `</head>` in each page.
 
 ---

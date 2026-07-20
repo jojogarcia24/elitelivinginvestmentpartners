@@ -14,9 +14,9 @@
 //   supabase secrets set SUPABASE_SERVICE_ROLE_KEY=...
 //   supabase secrets set IP_HASH_SALT=<any-long-random-string>
 //   supabase secrets set NOTIFY_TO=owner@example.com          (lead notifications)
-//   supabase secrets set NOTIFY_FROM="Elite Living <noreply@vossriskadvisors.com>"
+//   supabase secrets set NOTIFY_FROM="Elite Living <noreply@elitelivinginvestmentpartners.com>"
 //   supabase secrets set RESEND_API_KEY=...                   (optional, for email)
-//   supabase secrets set ALLOWED_ORIGIN=https://www.vossriskadvisors.com
+//   supabase secrets set ALLOWED_ORIGIN=https://elitelivinginvestmentpartners.com
 // =============================================================================
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -24,7 +24,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const IP_HASH_SALT = Deno.env.get("IP_HASH_SALT") ?? "elip-default-salt-change-me";
-const NOTIFY_TO = Deno.env.get("NOTIFY_TO") ?? "info@vossriskadvisors.com";
+const NOTIFY_TO = Deno.env.get("NOTIFY_TO") ?? "info@elitelivinginvestmentpartners.com";
 const NOTIFY_FROM = Deno.env.get("NOTIFY_FROM") ?? "Elite Living <onboarding@resend.dev>";
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY") ?? "";
 const ALLOWED_ORIGIN = Deno.env.get("ALLOWED_ORIGIN") ?? "*";
