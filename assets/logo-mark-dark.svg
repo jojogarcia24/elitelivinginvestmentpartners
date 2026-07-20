@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Elite Living Investment Partners monogram">
+  <!-- EL monogram in a gold ring, cream lettering — for DARK backgrounds. -->
+  <g fill="none" stroke="#C2A24E">
+    <circle cx="120" cy="120" r="104" stroke-width="1.6"/>
+    <circle cx="120" cy="120" r="96" stroke-width="1"/>
+  </g>
+  <g fill="#C2A24E">
+    <rect x="14.5" y="114.5" width="11" height="11" transform="rotate(45 20 120)"/>
+    <rect x="214.5" y="114.5" width="11" height="11" transform="rotate(45 220 120)"/>
+  </g>
+  <text x="121" y="155" text-anchor="middle"
+        font-family="'Playfair Display', Georgia, 'Times New Roman', serif"
+        font-weight="600" font-size="96" letter-spacing="2" fill="#F4F1EA">EL</text>
+</svg>
