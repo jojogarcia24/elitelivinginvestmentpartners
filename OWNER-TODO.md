@@ -44,7 +44,7 @@ Grouped by priority.
       [analytics.google.com](https://analytics.google.com) → Admin → Data streams
       → your web stream → **Measurement ID** (`G-XXXXXXXXXX`). Empty = disabled.
 - [ ] Confirm the **domain** and update any absolute URLs if it changes
-      (they currently use `https://www.vossriskadvisors.com`). These appear in:
+      (they currently use `https://elitelivinginvestmentpartners.com`). These appear in:
       each page's canonical/OG tags, `sitemap.xml`, and `robots.txt`.
 - [ ] After deploy, submit `sitemap.xml` in Google Search Console.
 
