@@ -19,7 +19,7 @@ Grouped by priority.
       `NOTIFY_TO=info@elitelivinginvestmentpartners.com`, and `IP_HASH_SALT` as edge-function
       secrets, then redeploy. Steps in [`supabase/README.md`](supabase/README.md).
       Until then, leads still save; you just won't get an email ping.
-- [ ] Decide: send applicants an **autoresponder**? (Off by default.)
+- [x] ~~Applicant **autoresponder**~~ — **ON.** Every applicant now gets a branded confirmation email from noreply@elitelivinginvestmentpartners.com.
 
 ## 3. Brand assets & content
 - [ ] **Hero photograph** — a strong, editorial architectural/lifestyle image.
