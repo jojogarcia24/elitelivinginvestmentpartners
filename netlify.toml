@@ -1,0 +1,18 @@
+# Netlify configuration — static site, no build step.
+[build]
+  publish = "."
+  command = ""
+
+# Sensible security headers for a static marketing site.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Long-cache static assets (fingerprint-free, so keep it modest).
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
