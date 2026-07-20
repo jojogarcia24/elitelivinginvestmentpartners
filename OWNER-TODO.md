@@ -16,7 +16,7 @@ Grouped by priority.
       `elitelivinginvestmentpartners` project; submissions save to the `leads`
       table now (view them in Supabase → Table Editor → leads).
 - [ ] **Email alerts** (optional but recommended) — add `RESEND_API_KEY`,
-      `NOTIFY_TO=info@vossriskadvisors.com`, and `IP_HASH_SALT` as edge-function
+      `NOTIFY_TO=info@elitelivinginvestmentpartners.com`, and `IP_HASH_SALT` as edge-function
       secrets, then redeploy. Steps in [`supabase/README.md`](supabase/README.md).
       Until then, leads still save; you just won't get an email ping.
 - [ ] Decide: send applicants an **autoresponder**? (Off by default.)
@@ -32,7 +32,7 @@ Grouped by priority.
       *experience/community*, never income — see compliance notes).
 
 ## 4. Contact & social details (currently placeholders)
-- [ ] **Contact email** — currently `hello@vossriskadvisors.com`. Confirm/replace.
+- [x] ~~Contact email~~ — set to `info@elitelivinginvestmentpartners.com` (mailbox still needs to be created, e.g. via Google Workspace).
 - [ ] **Phone number** — placeholder `(000) 000-0000` on the Contact page.
 - [ ] **Social profile URLs** — Instagram / LinkedIn / Facebook icons in the
       footer currently link to `#`.
@@ -50,7 +50,7 @@ Grouped by priority.
 
 ## 6. Deploy
 - [ ] Choose a host (Netlify / Vercel / Cloudflare Pages — see README).
-- [ ] Point `www.vossriskadvisors.com` DNS at the host.
+- [ ] Point `elitelivinginvestmentpartners.com` DNS at the host (Netlify — external DNS via GoDaddy recommended so website + email DNS stay together).
 
 ---
 

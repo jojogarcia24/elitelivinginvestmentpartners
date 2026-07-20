@@ -16,7 +16,7 @@
 > secrets in Supabase → **Project Settings → Edge Functions → Secrets**, then
 > redeploy the function:
 > - `RESEND_API_KEY` — from [resend.com](https://resend.com) (verify your sending domain).
-> - `NOTIFY_TO=info@vossriskadvisors.com`
+> - `NOTIFY_TO=info@elitelivinginvestmentpartners.com`
 > - `IP_HASH_SALT` — any long random string (replaces the insecure default).
 >
 > The rest of this file documents the setup for reference / rebuilding.
@@ -69,9 +69,9 @@ Set the rest:
 
 ```bash
 supabase secrets set IP_HASH_SALT="$(openssl rand -hex 32)"
-supabase secrets set ALLOWED_ORIGIN="https://www.vossriskadvisors.com"
+supabase secrets set ALLOWED_ORIGIN="https://elitelivinginvestmentpartners.com"
 supabase secrets set NOTIFY_TO="OWNER_EMAIL_HERE"
-supabase secrets set NOTIFY_FROM="Elite Living <noreply@vossriskadvisors.com>"
+supabase secrets set NOTIFY_FROM="Elite Living <noreply@elitelivinginvestmentpartners.com>"
 supabase secrets set RESEND_API_KEY="YOUR_RESEND_KEY"   # optional, for email alerts
 ```
 
