@@ -150,10 +150,12 @@ Deno.serve(async (req: Request) => {
             `Vertical: ${vertical || "—"}\nSource: ${source || "—"}\n\n` +
             `Message:\n${message || "—"}\n`,
           html:
-            `<div style="font-family:Arial,Helvetica,sans-serif;color:#2c2a24;max-width:560px;margin:0 auto;line-height:1.6;font-size:15px">` +
-            `<div style="background:#16150f;padding:18px 22px;margin-bottom:22px">` +
-            `<span style="font-family:Georgia,'Times New Roman',serif;color:#f4f1ea;font-size:16px;letter-spacing:2px;text-transform:uppercase">New application</span>` +
+            `<div style="background:#16150f;padding:26px 24px;text-align:center">` +
+            `<div style="font-family:Georgia,'Times New Roman',serif;color:#f4f1ea;font-size:21px;letter-spacing:3px;text-transform:uppercase">Elite Living</div>` +
+            `<div style="font-family:Arial,sans-serif;color:#cfcbbf;font-size:10px;letter-spacing:5px;text-transform:uppercase;margin-top:4px">Investment&nbsp;Partners</div>` +
             `</div>` +
+            `<div style="font-family:Arial,Helvetica,sans-serif;color:#2c2a24;max-width:560px;margin:0 auto;padding:30px 24px;line-height:1.6;font-size:15px">` +
+            `<div style="font-family:Georgia,'Times New Roman',serif;font-size:20px;color:#16150f;margin:0 0 20px">New application</div>` +
             `<table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;font-size:15px">` +
             `<tr><td style="padding:6px 0;color:#7c7a72;width:110px">Name</td><td style="padding:6px 0;font-weight:bold">${esc(name)}</td></tr>` +
             `<tr><td style="padding:6px 0;color:#7c7a72">Email</td><td style="padding:6px 0"><a href="mailto:${esc(email)}" style="color:#16150f">${esc(email)}</a></td></tr>` +
