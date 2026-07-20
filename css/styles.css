@@ -761,6 +761,9 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 760px) { .footer__top { grid-template-columns: 1fr; gap: 2.25rem; } }
 .footer__brand .brand { margin-bottom: 1.3rem; color: var(--cream); }
 .footer__brand p { font-size: 0.92rem; color: var(--cream-faint); max-width: 36ch; }
+.footer__social { margin-top: 1.2rem; }
+.footer__social a { display: inline-flex; color: var(--cream-faint); transition: color 0.25s var(--ease); }
+.footer__social a:hover { color: var(--cream); }
 .footer__col h4 {
   font-family: var(--font-body);
   font-size: 0.68rem;
