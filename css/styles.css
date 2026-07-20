@@ -663,19 +663,16 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
   justify-content: center;
 }
-/* Atmospheric treatment: blur + darken so any figures read as ambiance, not
-   identifiable people. Remove/soften these once licensed photography is used. */
-.split__media {
-  filter: blur(7px) brightness(0.74) saturate(0.92);
-  transform: scale(1.08);
-}
 .split__media::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(9,9,11,0.12), rgba(9,9,11,0.34));
+  background: linear-gradient(180deg, rgba(9,9,11,0.04), rgba(9,9,11,0.14));
   pointer-events: none;
 }
+/* Softened treatment (blur + darken) for photography with identifiable people. */
+.split__media--soft { filter: blur(7px) brightness(0.74) saturate(0.92); transform: scale(1.08); }
+.split__media--soft::after { background: linear-gradient(180deg, rgba(9,9,11,0.12), rgba(9,9,11,0.34)); }
 .split__media .placeholder-note {
   font-size: 0.66rem;
   letter-spacing: 0.28em;
