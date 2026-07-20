@@ -147,5 +147,50 @@ Deno.serve(async (req: Request) => {
     }
   }
 
+  // --- Auto-responder to the applicant (best-effort) -------------------------
+  if (RESEND_API_KEY) {
+    const firstName = name.split(/\s+/)[0] || "there";
+    try {
+      await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: NOTIFY_FROM,
+          to: [email],
+          reply_to: NOTIFY_TO,
+          subject: "We've received your request — Elite Living Investment Partners",
+          text:
+            `Hi ${firstName},\n\n` +
+            `Thank you for your interest in Elite Living Investment Partners.\n\n` +
+            `We've received your request for an invitation, and someone from our team ` +
+            `will be in touch personally to continue the conversation.\n\n` +
+            `In the meantime, feel free to explore the network at ` +
+            `https://elitelivinginvestmentpartners.com.\n\n` +
+            `— Elite Living Investment Partners\n` +
+            `info@elitelivinginvestmentpartners.com`,
+          html:
+            `<div style="background:#16150f;padding:28px 24px;text-align:center">` +
+            `<div style="font-family:Georgia,'Times New Roman',serif;color:#f4f1ea;font-size:22px;letter-spacing:3px;text-transform:uppercase">Elite Living</div>` +
+            `<div style="font-family:Arial,sans-serif;color:#cfcbbf;font-size:10px;letter-spacing:5px;text-transform:uppercase;margin-top:4px">Investment&nbsp;Partners</div>` +
+            `</div>` +
+            `<div style="font-family:Arial,Helvetica,sans-serif;color:#2c2a24;max-width:560px;margin:0 auto;padding:32px 24px;line-height:1.65;font-size:15px">` +
+            `<p>Hi ${firstName},</p>` +
+            `<p>Thank you for your interest in <strong>Elite Living Investment Partners</strong>.</p>` +
+            `<p>We've received your request for an invitation, and someone from our team will be in touch personally to continue the conversation.</p>` +
+            `<p>In the meantime, feel free to explore the network at ` +
+            `<a href="https://elitelivinginvestmentpartners.com" style="color:#16150f">elitelivinginvestmentpartners.com</a>.</p>` +
+            `<p style="margin-top:26px;color:#57544c">— Elite Living Investment Partners<br>` +
+            `<a href="mailto:info@elitelivinginvestmentpartners.com" style="color:#57544c">info@elitelivinginvestmentpartners.com</a></p>` +
+            `</div>`,
+        }),
+      });
+    } catch (e) {
+      console.error("Auto-responder failed:", e);
+    }
+  }
+
   return json({ ok: true, id: data.id });
 });
