@@ -1,7 +1,11 @@
-# Netlify configuration — static site, no build step.
+# Netlify configuration — static site.
+#
+# `publish = "."` served the repository itself, including the database schema,
+# the Edge Function source and the internal README/TODO notes. The build script
+# is an explicit allow-list of what this site serves; see scripts/netlify-build.sh.
 [build]
-  publish = "."
-  command = ""
+  publish = "dist"
+  command = "bash scripts/netlify-build.sh dist"
 
 # Sensible security headers for a static marketing site.
 [[headers]]
